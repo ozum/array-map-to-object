@@ -1,4 +1,4 @@
-# map-array-to-object
+# array-map-to-object
 
 Like `map()`, but creates object keys and values instead of array. `mapToObject` creates a new object with the returned keys and values of calling a provided function on every element in the calling array.
 
@@ -76,7 +76,7 @@ const roots = mapToObject(numbers, num => [num, Math.sqrt(num)]);
 
 Ƭ **Key**: *string | number | symbol*
 
-*Defined in [array-map-to-object.ts:4](https://github.com/ozum/array-map-to-object/blob/6dcfee2/src/array-map-to-object.ts#L4)*
+*Defined in [array-map-to-object.ts:4](https://github.com/ozum/array-map-to-object/blob/d4c0f57/src/array-map-to-object.ts#L4)*
 
 Type of key used in created object.
 
@@ -86,7 +86,7 @@ ___
 
 Ƭ **KeyProducer**: *function*
 
-*Defined in [array-map-to-object.ts:13](https://github.com/ozum/array-map-to-object/blob/6dcfee2/src/array-map-to-object.ts#L13)*
+*Defined in [array-map-to-object.ts:13](https://github.com/ozum/array-map-to-object/blob/d4c0f57/src/array-map-to-object.ts#L13)*
 
 Callback function that produces an element of the created object, which returns only single value used for key.
 Current array item is used as the value for the key in created object.
@@ -111,7 +111,7 @@ ___
 
 Ƭ **KeyValueProducer**: *function*
 
-*Defined in [array-map-to-object.ts:29](https://github.com/ozum/array-map-to-object/blob/6dcfee2/src/array-map-to-object.ts#L29)*
+*Defined in [array-map-to-object.ts:29](https://github.com/ozum/array-map-to-object/blob/d4c0f57/src/array-map-to-object.ts#L29)*
 
 Callback function that produces an element of the created object, which returns values used for key and value in created object.
 
@@ -135,7 +135,7 @@ Name | Type | Description |
 
 ▸ **mapToObject**<**T**, **K**, **V**>(`array`: *`T`[]*, `callback`: *[KeyValueProducer](README.md#keyvalueproducer)‹*`T`*, *`K`*, *`V`*›*, `thisArg?`: *any*): *`Record<K, V>`*
 
-*Defined in [array-map-to-object.ts:58](https://github.com/ozum/array-map-to-object/blob/6dcfee2/src/array-map-to-object.ts#L58)*
+*Defined in [array-map-to-object.ts:58](https://github.com/ozum/array-map-to-object/blob/d4c0f57/src/array-map-to-object.ts#L58)*
 
 Creates a new object with the results of calling a provided function on every element in the calling array.
 Returned key and value is added to created object.
@@ -175,7 +175,7 @@ Name | Type |
 
 ▸ **mapToObject**<**T**, **K**>(`array`: *`T`[]*, `callback`: *[KeyProducer](README.md#keyproducer)‹*`T`*, *`K`*›*, `thisArg?`: *any*): *`Record<K, T>`*
 
-*Defined in [array-map-to-object.ts:72](https://github.com/ozum/array-map-to-object/blob/6dcfee2/src/array-map-to-object.ts#L72)*
+*Defined in [array-map-to-object.ts:72](https://github.com/ozum/array-map-to-object/blob/d4c0f57/src/array-map-to-object.ts#L72)*
 
 Creates a new object with the results of calling a provided function on every element in the calling array.
 Returned key and current array item (as value) is added to created object.
