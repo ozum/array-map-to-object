@@ -1,4 +1,4 @@
-# map-array-to-object
+# array-map-to-object
 
 Like `map()`, but creates object keys and values instead of array. `mapToObject` creates a new object with the returned keys and values of calling a provided function on every element in the calling array.
 
