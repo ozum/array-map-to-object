@@ -5,6 +5,9 @@ module.exports = {
   testEnvironment: "node",
   coveragePathIgnorePatterns: ignorePatterns,
   testPathIgnorePatterns: ignorePatterns,
+  transform: {
+    "^.+\\.tsx?$": ["ts-jest", { diagnostics: { ignoreCodes: ["TS151001"] } }],
+  },
   coverageThreshold: {
     global: {
       branches: 100,

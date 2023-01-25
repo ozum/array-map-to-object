@@ -1,6 +1,10 @@
-import mapToObject from "./array-map-to-object";
+import mapToObject from "./map-to-object";
 
 const array = ["Red", "Green"];
+const arrayOfObjects = [
+  { id: 1, name: "Red" },
+  { id: 2, name: "Green" },
+];
 
 const keyProducer = (item: string): string => item.toUpperCase();
 const keyValueProducerArray = (item: string): [string, string] => [item.toUpperCase(), item.toLowerCase()];
@@ -12,18 +16,22 @@ function keyProducerWithThis(this: string, item: string): string {
 
 describe("mapToObject", () => {
   it("should create object with keys.", () => {
-    expect(mapToObject(array, keyProducer)).toEqual({ RED: "Red", GREEN: "Green" });
+    expect(mapToObject(array, keyProducer)).toStrictEqual({ RED: "Red", GREEN: "Green" });
   });
 
   it("should create object with keys using this arg.", () => {
-    expect(mapToObject(array, keyProducerWithThis, "x")).toEqual({ xRED: "Red", xGREEN: "Green" });
+    expect(mapToObject(array, keyProducerWithThis, "x")).toStrictEqual({ xRED: "Red", xGREEN: "Green" });
   });
 
   it("should create object with keys and values using array returning callback.", () => {
-    expect(mapToObject(array, keyValueProducerArray)).toEqual({ RED: "red", GREEN: "green" });
+    expect(mapToObject(array, keyValueProducerArray)).toStrictEqual({ RED: "red", GREEN: "green" });
   });
 
   it("should create object with keys and values using object returning callback.", () => {
-    expect(mapToObject(array, keyValueProducerObject)).toEqual({ RED: "red", GREEN: "green" });
+    expect(mapToObject(array, keyValueProducerObject)).toStrictEqual({ RED: "red", GREEN: "green" });
+  });
+
+  it("should create object with keys and values using key.", () => {
+    expect(mapToObject(arrayOfObjects, "id")).toStrictEqual({ 1: { id: 1, name: "Red" }, 2: { id: 2, name: "Green2" } });
   });
 });
