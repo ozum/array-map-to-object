@@ -32,6 +32,6 @@ describe("mapToObject", () => {
   });
 
   it("should create object with keys and values using key.", () => {
-    expect(mapToObject(arrayOfObjects, "id")).toStrictEqual({ 1: { id: 1, name: "Red" }, 2: { id: 2, name: "Green2" } });
+    expect(mapToObject(arrayOfObjects, "id")).toStrictEqual({ 1: { id: 1, name: "Red" }, 2: { id: 2, name: "Green" } });
   });
 });
