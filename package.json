@@ -18,8 +18,7 @@
     "format": "prettier --write --config .prettierrc --check 'src/**/*.+(js|jsx|json|less|css|ts|tsx|md|vue|gql)'",
     "test": "NODE_ENV=test jest --coverage",
     "prepublishOnly": "npm run build",
-    "x": "npm-run-all -p lint test format docs:build",
-    "prerelease": "concurrently npm:lint npm:test npm:format npm:docs:build",
+    "prerelease": "npm-run-all -p lint test format docs:build",
     "release": "(git diff --quiet && git diff --staged --quiet || git commit -am 'format code') && git checkout master && git pull origin master && git push --follow-tags origin master && npm publish"
   },
   "repository": {
