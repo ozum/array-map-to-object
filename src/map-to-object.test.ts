@@ -1,10 +1,13 @@
 import mapToObject from "./map-to-object";
 
-const array = ["Red", "Green"];
+const array = ["red", "green"];
 const arrayOfObjects = [
-  { id: 1, name: "Red" },
-  { id: 2, name: "Green" },
+  { id: 1, name: "red" },
+  { id: 2, name: "green" },
 ];
+
+const undefinedData = undefined as { id: number; name: string }[] | undefined | null;
+const nullData = null as { id: number; name: string }[] | undefined | null;
 
 const keyProducer = (item: string): string => item.toUpperCase();
 const keyValueProducerArray = (item: string): [string, string] => [item.toUpperCase(), item.toLowerCase()];
@@ -16,11 +19,11 @@ function keyProducerWithThis(this: string, item: string): string {
 
 describe("mapToObject", () => {
   it("should create object with keys.", () => {
-    expect(mapToObject(array, keyProducer)).toStrictEqual({ RED: "Red", GREEN: "Green" });
+    expect(mapToObject(array, keyProducer)).toStrictEqual({ RED: "red", GREEN: "green" });
   });
 
   it("should create object with keys using this arg.", () => {
-    expect(mapToObject(array, keyProducerWithThis, "x")).toStrictEqual({ xRED: "Red", xGREEN: "Green" });
+    expect(mapToObject(array, keyProducerWithThis, "x")).toStrictEqual({ xRED: "red", xGREEN: "green" });
   });
 
   it("should create object with keys and values using array returning callback.", () => {
@@ -32,18 +35,34 @@ describe("mapToObject", () => {
   });
 
   it("should create object with keys and values using key.", () => {
-    expect(mapToObject(arrayOfObjects, "id")).toStrictEqual({ 1: { id: 1, name: "Red" }, 2: { id: 2, name: "Green" } });
+    expect(mapToObject(arrayOfObjects, "id")).toStrictEqual({ 1: { id: 1, name: "red" }, 2: { id: 2, name: "green" } });
   });
 
   it("should create empty lookup object when value is undefined.", () => {
-    const data = undefined as unknown as typeof arrayOfObjects;
-    expect(mapToObject(data, "id")).toStrictEqual({});
-    expect(mapToObject(data, (r) => r.id)).toStrictEqual({});
+    const result = mapToObject(undefinedData, "name");
+
+    expect(result).toStrictEqual({});
+    expect(result.red).toBeUndefined(); // Ensure key is available in type. If not `lookup.id` throws TypeScript exception.
+  });
+
+  it("should create empty object when value is undefined.", () => {
+    const result = mapToObject(undefinedData, (r) => r.name);
+
+    expect(result).toStrictEqual({});
+    expect(result.red).toBeUndefined(); // Ensure key is available in type. If not `lookup.id` throws TypeScript exception.
   });
 
   it("should create empty lookup object when value is null.", () => {
-    const data = null as unknown as typeof arrayOfObjects;
-    expect(mapToObject(data, "id")).toStrictEqual({});
-    expect(mapToObject(data, (r) => r.id)).toStrictEqual({});
+    const result = mapToObject(nullData, "name");
+
+    expect(result).toStrictEqual({});
+    expect(result.name).toBeUndefined(); // Ensure key is available in type. If not `lookup.id` throws TypeScript exception.
+  });
+
+  it("should create empty object when value is null.", () => {
+    const result = mapToObject(nullData, (r) => r.name);
+
+    expect(result).toStrictEqual({});
+    expect(result.name).toBeUndefined(); // Ensure key is available in type. If not `lookup.id` throws TypeScript exception.
   });
 });
