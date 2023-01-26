@@ -43,7 +43,7 @@ mapToObject(array, 'name'); // { Red: { id: 1, name: "Red" }, Green: { id: 2, na
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `array` | `T`[] | is the array of objects to create new object from. |
+| `array` | `None` \| `T`[] | is the array of objects to create new object from. |
 | `key` | `Z` | is the key to get value to be used as new key in the result object. |
 
 #### Returns
@@ -54,7 +54,7 @@ a new object.
 
 #### Defined in
 
-[map-to-object.ts:91](https://github.com/ozum/array-map-to-object/blob/42246c4/src/map-to-object.ts#L91)
+[map-to-object.ts:97](https://github.com/ozum/array-map-to-object/blob/c8c080f/src/map-to-object.ts#L97)
 
 ▸ **default**<`T`, `K`, `V`\>(`array`, `callback`, `thisArg?`): `Record`<`K`, `V`\>
 
@@ -97,7 +97,7 @@ mapToObject(array, (currentValue) => { key: currentValue.toUpperCase(), value: c
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `array` | `T`[] | is the array to create new object from. |
+| `array` | `None` \| `T`[] | is the array to create new object from. |
 | `callback` | `KeyValueProducer`<`T`, `K`, `V`\> | is the function to call for each element in the array. |
 | `thisArg?` | `unknown` | is the value to be used as `this` in the callback function. |
 
@@ -109,7 +109,7 @@ a new object.
 
 #### Defined in
 
-[map-to-object.ts:114](https://github.com/ozum/array-map-to-object/blob/42246c4/src/map-to-object.ts#L114)
+[map-to-object.ts:120](https://github.com/ozum/array-map-to-object/blob/c8c080f/src/map-to-object.ts#L120)
 
 ▸ **default**<`T`, `K`\>(`array`, `callback`, `thisArg?`): `Record`<`K`, `T`\>
 
@@ -146,7 +146,7 @@ mapToObject(array, (currentValue) => currentValue.toUpperCase()); // { "RED": "R
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `array` | `T`[] | is the array to create new object from. |
+| `array` | `None` \| `T`[] | is the array to create new object from. |
 | `callback` | `KeyProducer`<`T`, `K`\> | is the function to call for each element in the array. |
 | `thisArg?` | `unknown` | is the value to be used as `this` in the callback function. |
 
@@ -158,4 +158,4 @@ a new object.
 
 #### Defined in
 
-[map-to-object.ts:135](https://github.com/ozum/array-map-to-object/blob/42246c4/src/map-to-object.ts#L135)
+[map-to-object.ts:141](https://github.com/ozum/array-map-to-object/blob/c8c080f/src/map-to-object.ts#L141)
