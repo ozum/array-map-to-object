@@ -3,6 +3,9 @@ import type { ConditionalKeys } from "type-fest";
 /** Type of key used in created object. */
 type Key = string | number | symbol;
 
+/** Null or undefined */
+type None = null | undefined;
+
 /**
  * Callback function that produces an element of the created object, which returns only single value used for key.
  * Current array item is used as the value for the key in created object.
@@ -39,7 +42,7 @@ type KeyValueProducer<T, K extends Key, V> =
 type Producer<T, K extends Key, V> = KeyValueProducer<T, K, V> | KeyProducer<T, K>;
 
 /** @ignore */
-function isKey<T>(array: T[], key: unknown): key is ConditionalKeys<T, Key> {
+function isKey<T>(array: T[] | None, key: unknown): key is ConditionalKeys<T, Key> {
   return typeof key === "string";
 }
 
@@ -47,8 +50,9 @@ function isKey<T>(array: T[], key: unknown): key is ConditionalKeys<T, Key> {
 type RecordByKey<T, K extends keyof T> = T[K] extends Key ? Record<T[K], T> : never;
 
 /** @ignore */
-function useKey<T, Z extends ConditionalKeys<T, Key>>(array: T[], key: Z): RecordByKey<T, Z> {
+function useKey<T, Z extends ConditionalKeys<T, Key>>(array: T[] | None, key: Z): RecordByKey<T, Z> {
   const result = {} as RecordByKey<T, Z>;
+  if (array === null || array === undefined) return result;
   array.forEach((item) => {
     result[item[key]] = item as RecordByKey<T, Z>[T[Z]];
   });
@@ -56,8 +60,10 @@ function useKey<T, Z extends ConditionalKeys<T, Key>>(array: T[], key: Z): Recor
 }
 
 /** @ignore */
-function useCallback<T, K extends Key, V>(array: T[], callback: Producer<T, K, V>, thisArg?: unknown): Record<K, V> | Record<K, T> {
+function useCallback<T, K extends Key, V>(array: T[] | None, callback: Producer<T, K, V>, thisArg?: unknown): Record<K, V> | Record<K, T> {
   const result = {} as Record<K, V> | Record<K, T>;
+  if (array === null || array === undefined) return result;
+
   const cb = thisArg ? (callback as Producer<T, K, V>).bind(thisArg) : callback;
 
   array.forEach((item, index) => {
@@ -88,7 +94,7 @@ function useCallback<T, K extends Key, V>(array: T[], callback: Producer<T, K, V
  * mapToObject(array, 'id'); // { 1: { id: 1, name: "Red" }, 2: { id: 2, name: "Green" } }
  * mapToObject(array, 'name'); // { Red: { id: 1, name: "Red" }, Green: { id: 2, name: "Green" } }
  */
-function mapToObject<T extends Record<Key, unknown>, Z extends ConditionalKeys<T, Key>>(array: T[], key: Z): RecordByKey<T, Z>;
+function mapToObject<T extends Record<Key, unknown>, Z extends ConditionalKeys<T, Key>>(array: T[] | None, key: Z): RecordByKey<T, Z>;
 /**
  * Creates a new object with the results of a function on every element in the calling array.
  * Returned key and value is added to created object.
@@ -111,7 +117,7 @@ function mapToObject<T extends Record<Key, unknown>, Z extends ConditionalKeys<T
  * mapToObject(array, (currentValue) => [currentValue.toUpperCase(), currentValue.toLowerCase()]); // { "RED": "Red", "GREEN": "Green" }
  * mapToObject(array, (currentValue) => { key: currentValue.toUpperCase(), value: currentValue.toLowerCase() }); // { "RED": "Red", "GREEN": "Green" }
  */
-function mapToObject<T, K extends Key, V>(array: T[], callback: KeyValueProducer<T, K, V>, thisArg?: unknown): Record<K, V>;
+function mapToObject<T, K extends Key, V>(array: T[] | None, callback: KeyValueProducer<T, K, V>, thisArg?: unknown): Record<K, V>;
 /**
  * Creates a new object with the results of a function on every element in the calling array.
  * Returned key and current array item (as value) is added to created object.
@@ -132,9 +138,9 @@ function mapToObject<T, K extends Key, V>(array: T[], callback: KeyValueProducer
  * const array = ["Red", "Green"];
  * mapToObject(array, (currentValue) => currentValue.toUpperCase()); // { "RED": "Red", "GREEN": "Green" }
  */
-function mapToObject<T, K extends Key>(array: T[], callback: KeyProducer<T, K>, thisArg?: unknown): Record<K, T>;
+function mapToObject<T, K extends Key>(array: T[] | None, callback: KeyProducer<T, K>, thisArg?: unknown): Record<K, T>;
 function mapToObject<T, K extends Key, V, Z extends ConditionalKeys<T, Key>>(
-  array: T[],
+  array: T[] | None,
   callbackOrKey: Producer<T, K, V> | Z,
   thisArg?: unknown
 ): Record<K, V> | Record<K, T> | RecordByKey<T, Z> {

@@ -34,4 +34,16 @@ describe("mapToObject", () => {
   it("should create object with keys and values using key.", () => {
     expect(mapToObject(arrayOfObjects, "id")).toStrictEqual({ 1: { id: 1, name: "Red" }, 2: { id: 2, name: "Green" } });
   });
+
+  it("should create empty lookup object when value is undefined.", () => {
+    const data = undefined as unknown as typeof arrayOfObjects;
+    expect(mapToObject(data, "id")).toStrictEqual({});
+    expect(mapToObject(data, (r) => r.id)).toStrictEqual({});
+  });
+
+  it("should create empty lookup object when value is null.", () => {
+    const data = null as unknown as typeof arrayOfObjects;
+    expect(mapToObject(data, "id")).toStrictEqual({});
+    expect(mapToObject(data, (r) => r.id)).toStrictEqual({});
+  });
 });
