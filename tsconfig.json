@@ -100,6 +100,7 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
+  "exclude": ["test", "**/*.test.ts", "**/*.e2e.ts"],
   "typedocOptions": {
     "exclude": ["**/*+(.test|.spec|.e2e).ts", "*/util/**/*", "*/helper/**/*"]
   }

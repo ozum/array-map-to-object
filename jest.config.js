@@ -1,12 +1,14 @@
 const ignorePatterns = ["<rootDir>/dist/", "<rootDir>/node_modules/", "<rootDir>/test-helper/"];
 
 module.exports = {
-  preset: "ts-jest",
+  // preset: "ts-jest/presets/default-esm",
   testEnvironment: "node",
   coveragePathIgnorePatterns: ignorePatterns,
   testPathIgnorePatterns: ignorePatterns,
+  extensionsToTreatAsEsm: [".ts", ".tsx"],
   transform: {
-    "^.+\\.tsx?$": ["ts-jest", { diagnostics: { ignoreCodes: ["TS151001"] } }],
+    // "^.+\\.tsx?$": ["ts-jest", { diagnostics: { ignoreCodes: ["TS151001"] } }],
+    "^.+\\.(t|j)sx?$": ["@swc/jest"],
   },
   coverageThreshold: {
     global: {
