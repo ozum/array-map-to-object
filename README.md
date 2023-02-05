@@ -23,14 +23,20 @@ import mapToObject from "array-map-to-object";
 ## Using a property for key to create object
 
 ```ts
-const users = [{ name: "George", basketSize: 3 }, { name: "Lisa", basketSize: 2 }];
+const users = [
+  { name: "George", basketSize: 3 },
+  { name: "Lisa", basketSize: 2 },
+];
 const usersLookup = mapToObject(users, "name");
 // { George: { name: "George", basketSize: 3 }, Lisa: { name: "Lisa", basketSize: 2 } }
 ```
 
 ```ts
-const users = [{ name: "George", basketSize: 3 }, { name: "Lisa", basketSize: 2 }];
-const usersLookup = mapToObject(users, user => user.name);
+const users = [
+  { name: "George", basketSize: 3 },
+  { name: "Lisa", basketSize: 2 },
+];
+const usersLookup = mapToObject(users, (user) => user.name);
 // Callback returns only key, value is same item. `usersLookup` is:
 // { George: { name: "George", basketSize: 3 }, Lisa: { name: "Lisa", basketSize: 2 } }
 ```
@@ -38,8 +44,11 @@ const usersLookup = mapToObject(users, user => user.name);
 ## Creating custom object using key/value pair.
 
 ```ts
-const users = [{ name: "George", basketSize: 3 }, { name: "Lisa", basketSize: 2 }];
-const usersLookup = mapToObject(users, user => [user.name, user.basketSize]);
+const users = [
+  { name: "George", basketSize: 3 },
+  { name: "Lisa", basketSize: 2 },
+];
+const usersLookup = mapToObject(users, (user) => [user.name, user.basketSize]);
 // Callback returns [key, value] tuple (array). First returned value used for key, second for value. `usersLookup` is:
 // { George: 3, Lisa: 2 }
 ```
@@ -47,8 +56,11 @@ const usersLookup = mapToObject(users, user => [user.name, user.basketSize]);
 ## Creating custom object using key/value object.
 
 ```ts
-const users = [{ name: "George", basketSize: 3 }, { name: "Lisa", basketSize: 2 }];
-const usersLookup = mapToObject(users, user => ({ key: user.name, value: user.basketSize }));
+const users = [
+  { name: "George", basketSize: 3 },
+  { name: "Lisa", basketSize: 2 },
+];
+const usersLookup = mapToObject(users, (user) => ({ key: user.name, value: user.basketSize }));
 // Callback returns { key, value } object. `usersLookup` is:
 // { George: 3, Lisa: 2 }
 ```
@@ -57,6 +69,6 @@ const usersLookup = mapToObject(users, user => ({ key: user.name, value: user.ba
 
 ```ts
 const numbers = [1, 4, 9];
-const roots = mapToObject(numbers, num => [num, Math.sqrt(num)]);
+const roots = mapToObject(numbers, (num) => [num, Math.sqrt(num)]);
 // `roots` is { 1: 1, 4: 2, 9: 3 }
 ```
