@@ -41,7 +41,7 @@ module.exports = {
       // JEST: Run rules only on test-related files.
       overrides: [
         {
-          parserOptions: { project: ["tsconfig.json"] },
+          parserOptions: { project: ["tsconfig.test.json"] },
           files: ["*.spec.ts", "*.test.ts"],
           env: { "jest/globals": true },
           plugins: ["jest"],
@@ -53,12 +53,6 @@ module.exports = {
               { onlyFunctionsWithAsyncKeyword: true, onlyFunctionsWithExpectInLoop: true, onlyFunctionsWithExpectInCallback: true },
             ],
           },
-          overrides: [
-            {
-              parserOptions: { project: ["test/tsconfig.json"] },
-              files: ["test/**/*.ts"],
-            },
-          ],
         },
       ],
     },

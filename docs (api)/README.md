@@ -27,27 +27,24 @@ Z is keys of array elements.
 **`Example`**
 
 ```ts
-const array = [
-  { id: 1, name: "Red" },
-  { id: 2, name: "Green" },
-];
-mapToObject(array, "id"); // { 1: { id: 1, name: "Red" }, 2: { id: 2, name: "Green" } }
-mapToObject(array, "name"); // { Red: { id: 1, name: "Red" }, Green: { id: 2, name: "Green" } }
+const array = [{ id: 1, name: "Red" }, { id: 2, name: "Green" }];
+mapToObject(array, 'id'); // { 1: { id: 1, name: "Red" }, 2: { id: 2, name: "Green" } }
+mapToObject(array, 'name'); // { Red: { id: 1, name: "Red" }, Green: { id: 2, name: "Green" } }
 ```
 
 #### Type parameters
 
-| Name | Type                                     |
-| :--- | :--------------------------------------- |
-| `T`  | extends `Record`<`Key`, `unknown`\>      |
-| `Z`  | extends `string` \| `number` \| `symbol` |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `Record`<`Key`, `unknown`\> |
+| `Z` | extends `string` \| `number` \| `symbol` |
 
 #### Parameters
 
-| Name    | Type            | Description                                                         |
-| :------ | :-------------- | :------------------------------------------------------------------ |
-| `array` | `None` \| `T`[] | is the array of objects to create new object from.                  |
-| `key`   | `Z`             | is the key to get value to be used as new key in the result object. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `array` | `None` \| `T`[] | is the array of objects to create new object from. |
+| `key` | `Z` | is the key to get value to be used as new key in the result object. |
 
 #### Returns
 
@@ -57,7 +54,7 @@ a new object.
 
 #### Defined in
 
-[map-to-object.ts:97](https://github.com/ozum/array-map-to-object/blob/f393549/src/map-to-object.ts#L97)
+[map-to-object.ts:97](https://github.com/ozum/array-map-to-object/blob/7527108/src/map-to-object.ts#L97)
 
 ▸ **default**<`T`, `K`, `V`\>(`array`, `callback`, `thisArg?`): `Record`<`K`, `V`\>
 
@@ -90,19 +87,19 @@ mapToObject(array, (currentValue) => { key: currentValue.toUpperCase(), value: c
 
 #### Type parameters
 
-| Name | Type          |
-| :--- | :------------ |
-| `T`  | `T`           |
-| `K`  | extends `Key` |
-| `V`  | `V`           |
+| Name | Type |
+| :------ | :------ |
+| `T` | `T` |
+| `K` | extends `Key` |
+| `V` | `V` |
 
 #### Parameters
 
-| Name       | Type                               | Description                                                 |
-| :--------- | :--------------------------------- | :---------------------------------------------------------- |
-| `array`    | `None` \| `T`[]                    | is the array to create new object from.                     |
-| `callback` | `KeyValueProducer`<`T`, `K`, `V`\> | is the function to call for each element in the array.      |
-| `thisArg?` | `unknown`                          | is the value to be used as `this` in the callback function. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `array` | `None` \| `T`[] | is the array to create new object from. |
+| `callback` | `KeyValueProducer`<`T`, `K`, `V`\> | is the function to call for each element in the array. |
+| `thisArg?` | `unknown` | is the value to be used as `this` in the callback function. |
 
 #### Returns
 
@@ -112,7 +109,7 @@ a new object.
 
 #### Defined in
 
-[map-to-object.ts:120](https://github.com/ozum/array-map-to-object/blob/f393549/src/map-to-object.ts#L120)
+[map-to-object.ts:120](https://github.com/ozum/array-map-to-object/blob/7527108/src/map-to-object.ts#L120)
 
 ▸ **default**<`T`, `K`\>(`array`, `callback`, `thisArg?`): `Record`<`K`, `T`\>
 
@@ -140,18 +137,18 @@ mapToObject(array, (currentValue) => currentValue.toUpperCase()); // { "RED": "R
 
 #### Type parameters
 
-| Name | Type          |
-| :--- | :------------ |
-| `T`  | `T`           |
-| `K`  | extends `Key` |
+| Name | Type |
+| :------ | :------ |
+| `T` | `T` |
+| `K` | extends `Key` |
 
 #### Parameters
 
-| Name       | Type                     | Description                                                 |
-| :--------- | :----------------------- | :---------------------------------------------------------- |
-| `array`    | `None` \| `T`[]          | is the array to create new object from.                     |
-| `callback` | `KeyProducer`<`T`, `K`\> | is the function to call for each element in the array.      |
-| `thisArg?` | `unknown`                | is the value to be used as `this` in the callback function. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `array` | `None` \| `T`[] | is the array to create new object from. |
+| `callback` | `KeyProducer`<`T`, `K`\> | is the function to call for each element in the array. |
+| `thisArg?` | `unknown` | is the value to be used as `this` in the callback function. |
 
 #### Returns
 
@@ -161,4 +158,4 @@ a new object.
 
 #### Defined in
 
-[map-to-object.ts:141](https://github.com/ozum/array-map-to-object/blob/f393549/src/map-to-object.ts#L141)
+[map-to-object.ts:141](https://github.com/ozum/array-map-to-object/blob/7527108/src/map-to-object.ts#L141)
