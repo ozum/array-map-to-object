@@ -54,7 +54,7 @@ a new object.
 
 #### Defined in
 
-[map-to-object.ts:96](https://github.com/ozum/array-map-to-object/blob/0ca556c/src/map-to-object.ts#L96)
+[map-to-object.ts:96](https://github.com/ozum/array-map-to-object/blob/a962670/src/map-to-object.ts#L96)
 
 ▸ **default**<`T`, `K`, `V`\>(`array`, `callback`, `thisArg?`): `Record`<`K`, `V`\>
 
@@ -109,7 +109,7 @@ a new object.
 
 #### Defined in
 
-[map-to-object.ts:119](https://github.com/ozum/array-map-to-object/blob/0ca556c/src/map-to-object.ts#L119)
+[map-to-object.ts:119](https://github.com/ozum/array-map-to-object/blob/a962670/src/map-to-object.ts#L119)
 
 ▸ **default**<`T`, `K`\>(`array`, `callback`, `thisArg?`): `Record`<`K`, `T`\>
 
@@ -158,4 +158,4 @@ a new object.
 
 #### Defined in
 
-[map-to-object.ts:140](https://github.com/ozum/array-map-to-object/blob/0ca556c/src/map-to-object.ts#L140)
+[map-to-object.ts:140](https://github.com/ozum/array-map-to-object/blob/a962670/src/map-to-object.ts#L140)
