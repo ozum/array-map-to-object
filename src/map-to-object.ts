@@ -62,12 +62,11 @@ function useKey<T, Z extends ConditionalKeys<T, Key>>(array: T[] | None, key: Z)
 /** @ignore */
 function useCallback<T, K extends Key, V>(array: T[] | None, callback: Producer<T, K, V>, thisArg?: unknown): Record<K, V> | Record<K, T> {
   const result = {} as Record<K, V> | Record<K, T>;
-  if (array === null || array === undefined) return result;
+  const safeArray = array ?? [];
+  const cb = thisArg ? callback.bind(thisArg) : callback;
 
-  const cb = thisArg ? (callback as Producer<T, K, V>).bind(thisArg) : callback;
-
-  array.forEach((item, index) => {
-    const cbResult = cb(item, index, array);
+  safeArray.forEach((item, index) => {
+    const cbResult = cb(item, index, safeArray);
     if (typeof cbResult === "object") {
       const [key, value] = Array.isArray(cbResult) ? cbResult : [cbResult.key, cbResult.value];
       (result as Record<K, V>)[key as K] = value;
