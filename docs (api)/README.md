@@ -27,24 +27,27 @@ Z is keys of array elements.
 **`Example`**
 
 ```ts
-const array = [{ id: 1, name: "Red" }, { id: 2, name: "Green" }];
-mapToObject(array, 'id'); // { 1: { id: 1, name: "Red" }, 2: { id: 2, name: "Green" } }
-mapToObject(array, 'name'); // { Red: { id: 1, name: "Red" }, Green: { id: 2, name: "Green" } }
+const array = [
+  { id: 1, name: "Red" },
+  { id: 2, name: "Green" },
+];
+mapToObject(array, "id"); // { 1: { id: 1, name: "Red" }, 2: { id: 2, name: "Green" } }
+mapToObject(array, "name"); // { Red: { id: 1, name: "Red" }, Green: { id: 2, name: "Green" } }
 ```
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `Record`<`Key`, `unknown`\> |
-| `Z` | extends `string` \| `number` \| `symbol` |
+| Name | Type                                     |
+| :--- | :--------------------------------------- |
+| `T`  | extends `Record`<`Key`, `unknown`\>      |
+| `Z`  | extends `string` \| `number` \| `symbol` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `None` \| `T`[] | is the array of objects to create new object from. |
-| `key` | `Z` | is the key to get value to be used as new key in the result object. |
+| Name    | Type            | Description                                                         |
+| :------ | :-------------- | :------------------------------------------------------------------ |
+| `array` | `None` \| `T`[] | is the array of objects to create new object from.                  |
+| `key`   | `Z`             | is the key to get value to be used as new key in the result object. |
 
 #### Returns
 
@@ -87,19 +90,19 @@ mapToObject(array, (currentValue) => { key: currentValue.toUpperCase(), value: c
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K` | extends `Key` |
-| `V` | `V` |
+| Name | Type          |
+| :--- | :------------ |
+| `T`  | `T`           |
+| `K`  | extends `Key` |
+| `V`  | `V`           |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `None` \| `T`[] | is the array to create new object from. |
-| `callback` | `KeyValueProducer`<`T`, `K`, `V`\> | is the function to call for each element in the array. |
-| `thisArg?` | `unknown` | is the value to be used as `this` in the callback function. |
+| Name       | Type                               | Description                                                 |
+| :--------- | :--------------------------------- | :---------------------------------------------------------- |
+| `array`    | `None` \| `T`[]                    | is the array to create new object from.                     |
+| `callback` | `KeyValueProducer`<`T`, `K`, `V`\> | is the function to call for each element in the array.      |
+| `thisArg?` | `unknown`                          | is the value to be used as `this` in the callback function. |
 
 #### Returns
 
@@ -137,18 +140,18 @@ mapToObject(array, (currentValue) => currentValue.toUpperCase()); // { "RED": "R
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K` | extends `Key` |
+| Name | Type          |
+| :--- | :------------ |
+| `T`  | `T`           |
+| `K`  | extends `Key` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `None` \| `T`[] | is the array to create new object from. |
-| `callback` | `KeyProducer`<`T`, `K`\> | is the function to call for each element in the array. |
-| `thisArg?` | `unknown` | is the value to be used as `this` in the callback function. |
+| Name       | Type                     | Description                                                 |
+| :--------- | :----------------------- | :---------------------------------------------------------- |
+| `array`    | `None` \| `T`[]          | is the array to create new object from.                     |
+| `callback` | `KeyProducer`<`T`, `K`\> | is the function to call for each element in the array.      |
+| `thisArg?` | `unknown`                | is the value to be used as `this` in the callback function. |
 
 #### Returns
 
