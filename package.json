@@ -4,6 +4,7 @@
   "description": "Creates a new object with the returned keys and values of calling a provided function on every element in the calling array.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "files": [
     "dist",
     "!dist/**/@(*.spec|*.test|*.e2e)*",
@@ -16,7 +17,7 @@
     "docs:build": "typedoc --cleanOutputDir --readme none --entryPoints src/index.ts --out 'docs (api)'",
     "lint": "eslint --ignore-path .gitignore --cache --max-warnings 0 --ext js,jsx,ts,tsx,vue --fix .",
     "format": "prettier . --write",
-    "test": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --coverage",
+    "test": "jest --coverage",
     "prepublishOnly": "npm run build",
     "prerelease": "npm-run-all -p lint test format docs:build",
     "release": "(git diff --quiet && git diff --staged --quiet || git commit -am 'format code') && git checkout master && git pull origin master && git push --follow-tags origin master && npm publish"

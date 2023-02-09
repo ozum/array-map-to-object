@@ -1,6 +1,6 @@
 const ignorePatterns = ["<rootDir>/dist/", "<rootDir>/node_modules/"];
 
-module.exports = {
+export default {
   testEnvironment: "node",
   coveragePathIgnorePatterns: ignorePatterns,
   testPathIgnorePatterns: ignorePatterns,
