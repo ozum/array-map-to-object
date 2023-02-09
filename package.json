@@ -1,6 +1,6 @@
 {
   "name": "array-map-to-object",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Creates a new object with the returned keys and values of calling a provided function on every element in the calling array.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
