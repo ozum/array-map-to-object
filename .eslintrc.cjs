@@ -28,6 +28,9 @@ module.exports = {
         "plugin:prettier/recommended", // RUN Prettier as ESLint rule by using `prettier/eslint-plugin-prettier` and TURN OFF ESLint rules which conflict with Prettier by using `prettier/eslint-config-prettier`.
       ],
       plugins: ["@typescript-eslint", "import"],
+      settings: {
+        "import/resolver": { typescript: {} },
+      },
       rules: {
         "import/extensions": ["error", "ignorePackages", { js: "never", jsx: "never", ts: "never", tsx: "never" }],
         //   "lines-between-class-members": ["warn", "always", { exceptAfterSingleLine: true }],
