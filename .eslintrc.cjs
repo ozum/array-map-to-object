@@ -33,6 +33,8 @@ module.exports = {
       },
       rules: {
         "import/extensions": ["error", "ignorePackages", { js: "never", jsx: "never", ts: "never", tsx: "never" }],
+        "no-useless-constructor": "off",
+        "@typescript-eslint/no-useless-constructor": "error"
         //   "lines-between-class-members": ["warn", "always", { exceptAfterSingleLine: true }],
         //   "no-dupe-class-members": "off", // Prevents method overload in TypeScript, and TypeScript already checks duplicates.
         //   "no-unused-vars": "off", // @typescript-eslint/recommended has same rule
