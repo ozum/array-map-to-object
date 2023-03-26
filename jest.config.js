@@ -6,6 +6,6 @@ export default {
   testPathIgnorePatterns: ignorePatterns,
   transform: { "^.+\\.(t|j)sx?$": ["@swc/jest"] },
   moduleNameMapper: { "(.+)\\.js": "$1" },
-  extensionsToTreatAsEsm: [".ts"],
+  extensionsToTreatAsEsm: [".ts", ".tsx"],
   coverageThreshold: { global: { branches: 100, functions: 100, lines: 100, statements: 100 } },
 };
