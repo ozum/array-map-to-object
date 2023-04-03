@@ -313,3 +313,6 @@ docs/nav.02.api
 
 # Microbunde cache files
 .rts2*
+
+# TurboRepo
+.turbo

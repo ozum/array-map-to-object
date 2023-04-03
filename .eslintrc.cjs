@@ -34,8 +34,8 @@ module.exports = {
       rules: {
         "import/extensions": ["error", "ignorePackages", { js: "never", jsx: "never", ts: "never", tsx: "never" }],
         "no-useless-constructor": "off",
-        "@typescript-eslint/no-useless-constructor": "error"
-        //   "lines-between-class-members": ["warn", "always", { exceptAfterSingleLine: true }],
+        "@typescript-eslint/no-useless-constructor": "error",
+        "lines-between-class-members": ["warn", "always", { exceptAfterSingleLine: true }],
         //   "no-dupe-class-members": "off", // Prevents method overload in TypeScript, and TypeScript already checks duplicates.
         //   "no-unused-vars": "off", // @typescript-eslint/recommended has same rule
         //   "no-underscore-dangle": "off",
@@ -53,6 +53,7 @@ module.exports = {
           extends: ["plugin:jest/all"],
           rules: {
             "import/extensions": ["error", "ignorePackages", { js: "never", jsx: "never", ts: "never", tsx: "never" }],
+            'import/no-extraneous-dependencies': ["error", { devDependencies: true, }],
             "jest/prefer-expect-assertions": [
               "error",
               { onlyFunctionsWithAsyncKeyword: true, onlyFunctionsWithExpectInLoop: true, onlyFunctionsWithExpectInCallback: true },
