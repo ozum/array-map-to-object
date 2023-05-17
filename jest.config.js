@@ -1,9 +1,9 @@
 const ignorePatterns = ["<rootDir>/dist/", "<rootDir>/node_modules/"];
 
 export default {
-  preset: "ts-jest",
+  // preset: "ts-jest",
   moduleNameMapper: { "^(\\.{1,2}/.*)\\.js$": "$1" },
-  transform: { "^.+\\.tsx?$": ["ts-jest", { useESM: true }] },
+  transform: { "^.+\\.(t|j)sx?$": "@swc/jest" }, // For ts-jest: ["ts-jest", { useESM: true }]
   coveragePathIgnorePatterns: ignorePatterns,
   testPathIgnorePatterns: ignorePatterns,
   extensionsToTreatAsEsm: [".ts", ".tsx"],
